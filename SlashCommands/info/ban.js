@@ -26,6 +26,8 @@ run: async (client, interaction, args) => {
 
     let user = interaction.options.getUser("user");
     let rr = interaction.options.getString("motivo");
+    let rra = interaction.options.getString("motivo");
+    if(rra == null) rra = `Sem motivo`;
     if(rr == null) rr = `Banido pelo dono do server!`;
     if(user.id == interaction.user.id) return interaction.followUp({content: `Você não pode se banir!`});
 if(user.id == interaction.guild.me.id) return interaction.followUp({content: `Você não pode me banir!`});
@@ -37,7 +39,15 @@ if(!interaction.guild.me.permissions.has("BAN_MEMBERS")) return interaction.foll
 if(interaction.guild.ownerId) {
     interaction.followUp({content: `${user} foi banido! Motivo: ` +  rr })
     
+    user.ban({reason: rr || `Banido pelo dono do server!`})
    
 };
+interaction.followUp({content: `${user} foi banido! Motivo: ` +  rra })
+
+user.ban({reason: rra})
+
+
+
+
 }
 }
