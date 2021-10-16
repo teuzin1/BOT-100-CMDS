@@ -12,7 +12,8 @@
     "license": "ISC",
     "dependencies": {
         "discord.js": "^13.2.0",
-        "glob": "^7.1.7"
-
+        "glob": "^7.1.7",
+        "moment": "^2.29.1",
+        "quick.db": "^7.1.3"
     }
 }

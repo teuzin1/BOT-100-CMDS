@@ -19,6 +19,7 @@ const menina = new Discord.MessageButton().setCustomId("ma").setLabel("Menina").
 const nb = new Discord.MessageButton().setCustomId("nb").setLabel("Não binario").setStyle("PRIMARY")
 const mais = new Discord.MessageButton().setCustomId("+18").setLabel("+18").setStyle("PRIMARY")
 const menos = new Discord.MessageButton().setCustomId("-18").setLabel("-18").setStyle("PRIMARY")
+
 client.on("ready", () => { 
     let cc = client.channels.cache.get(config.id_ticekt_channel)
     const row = new Discord.MessageActionRow().addComponents(criar)
@@ -135,7 +136,7 @@ if (interaction.customId.startsWith('nb')) {
     
     })
 }
-    interaction.member.roles.add(roles.não_binario)
+interaction.member.roles.add(roles.não_binario)
     interaction.reply({
         content: `Cargo setado!`,
         ephemeral: true,
@@ -154,6 +155,8 @@ cc.send({embeds: [embed], components: [row]})
 
   
 });
+
+
 
 
 

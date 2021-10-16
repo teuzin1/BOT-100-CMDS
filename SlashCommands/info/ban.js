@@ -23,8 +23,8 @@ options: [
 
 
 run: async (client, interaction, args) => {
-
     let user = interaction.options.getUser("user");
+    const memberTarget = interaction.guild.members.cache.get(user.id);
     let rr = interaction.options.getString("motivo");
     let rra = interaction.options.getString("motivo");
     if(rra == null) rra = `Sem motivo`;
@@ -39,12 +39,12 @@ if(!interaction.guild.me.permissions.has("BAN_MEMBERS")) return interaction.foll
 if(interaction.guild.ownerId) {
     interaction.followUp({content: `${user} foi banido! Motivo: ` +  rr })
     
-    user.ban({reason: rr || `Banido pelo dono do server!`})
+    memberTarget.ban({reason: rr || `Banido pelo dono do server!`})
    
 };
 interaction.followUp({content: `${user} foi banido! Motivo: ` +  rra })
 
-user.ban({reason: rra})
+memberTarget.ban({reason: rra})
 
 
 
