@@ -1,11 +1,17 @@
 const client = require("../index");
+const config = require("../config.json")
+const creditos = require("../CREDITS.json")
 
 client.on("ready", () => { 
-
+    let a = config.Logs_ini
+    let b = client.channels.cache.get(a)
     const Discord = require("discord.js")
-    const logs_ini = new Discord.WebhookClient({id:"898633875490758688", token: "dlzXOLWj5hBMzGrrSX9WoRTBuoVs-ztC95oHvJ9Cn4qo7RLOrj-E8II4K5d21xGjeGf0"});
+  
     console.log(`Estou online`);
     client.user.setActivity("USO COMANDOS DE /")
-    logs_ini.send({content: "ESTOU ONLINE!"});
+   b.send({content: `<:719816652572852225:897525071323734016> \`<@${config.owners}>\`\n\n <:751830147996581960:897525071034347541> Estou online! `});
+   let channel3 = client.channels.cache.get(config.logs_stats)
+   channel3.edit({name: `💹・sᴛᴀᴛᴜs : ᴏɴʟɪɴᴇ`})
+
   
 });
